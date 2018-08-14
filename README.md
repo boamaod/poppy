@@ -1,5 +1,5 @@
 # Poppy
-Poppy helps to [delete your Facebook](https://youtu.be/k_Jq38JKN3A). If you are contacted on Messenger, farewell message is displayed and further contact is blocked. One by one, every contact will be shown a farewell message and blocked until Facebook effectively is a true digital desert, it carefully wants to disguise.
+Poppy helps to [delete your Facebook](https://youtu.be/k_Jq38JKN3A). If you are contacted on Messenger, a farewell message is displayed and further communications from this contact is blocked. One by one, every contact will be shown a farewell message and blocked until Facebook effectively is a true digital desert, it carefully wants to disguise.
 
 ![Delete your Facebook!](/poppy.jpg)
 
