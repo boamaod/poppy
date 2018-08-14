@@ -25,6 +25,8 @@ contact me at:
 
 reply = Message(text=poppy)
 
+thread_ids = set()
+
 # Subclass fbchat.Client and override required methods
 class PoppyBot(Client):
 
@@ -35,9 +37,22 @@ class PoppyBot(Client):
         log.info("{} from {} in {}".format(message_object, thread_id, thread_type.name))
 
         # If you're not the author, echo
-        if author_id != self.uid:
+        if author_id != self.uid and thread_id not in thread_ids:
             self.send(reply, thread_id=thread_id, thread_type=thread_type)
+            thread_ids.add(thread_id)
             self.blockUser(author_id)
+            with open('threads.conf', 'a') as config_file:
+                config_file.write(thread_id + "\n")
+            print(thread_ids, thread_id)
+
+# Read list of thread IDs already announced to if available
+try:
+    with open('threads.conf', 'r') as config_file:
+        thread_ids = set(config_file.read().split())
+except FileNotFoundError:
+    pass
+    
+print(thread_ids)
 
 client = PoppyBot('<username>', '<password>')
 client.listen()
