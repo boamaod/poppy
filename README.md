@@ -1,9 +1,11 @@
 # Poppy
-Poppy helps to [delete your Facebook](https://youtu.be/k_Jq38JKN3A)
+Poppy helps to [delete your Facebook](https://youtu.be/k_Jq38JKN3A).
+
+![Delete your Facebook!](/poppy.jpg)
 
 # Install/test run
 
-Tried on Ubuntu 18.04.1 and Raspbian 9.3
+Tried on Ubuntu 18.04.1 and Raspbian 9.3.
 
 ```
 sudo apt install python3-setuptools python3-bs4
