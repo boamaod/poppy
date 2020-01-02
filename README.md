@@ -18,5 +18,5 @@ pip3 install fbchat-asyncio
 wget https://raw.githubusercontent.com/boamaod/poppy/master/pop.py
 chmod +x pop.py
 sudo apt install screen
-screen -dmLU -S poppy ./pop.py
+screen -d -m -L -U -S poppy ./pop.py
 ```
