@@ -4,7 +4,21 @@
 from fbchat import Client, ThreadType, Message
 import asyncio
 
-poppy = """```
+thread_ids = set()
+
+# Subclass fbchat.Client and override required methods
+class PoppyBot(Client):
+    async def on_message(self, mid=None, author_id=None, message_object=None, thread_id=None,
+                         thread_type=ThreadType.USER, at=None, metadata=None, msg=None):
+        await self.mark_as_delivered(thread_id, message_object.uid)
+        await self.mark_as_read(thread_id)
+
+        print("{} from {} in {}".format(message_object, thread_id, thread_type.name))
+
+        # If you're not the author, echo
+        if author_id != self.uid and thread_id not in thread_ids:
+            thread_ids.add(thread_id)
+            poppy = f"""```
  _________
 < enough! >
  ---------
@@ -22,26 +36,13 @@ contact me at:
  ▶ youtu.be/k_Jq38JKN3A
  ▶ tiny.cc/fortheplants
 
+[you were no {len(thread_ids)} blocked]
+
 ```"""
-
-reply = Message(text=poppy)
-
-thread_ids = set()
-
-# Subclass fbchat.Client and override required methods
-class PoppyBot(Client):
-    async def on_message(self, mid=None, author_id=None, message_object=None, thread_id=None,
-                         thread_type=ThreadType.USER, at=None, metadata=None, msg=None):
-        await self.mark_as_delivered(thread_id, message_object.uid)
-        await self.mark_as_read(thread_id)
-
-        print("{} from {} in {}".format(message_object, thread_id, thread_type.name))
-
-        if author_id != self.uid and thread_id not in thread_ids:
+            reply = Message(text=poppy)
+            print(thread_ids, thread_id)
             await self.send(reply, thread_id=thread_id, thread_type=thread_type)
             print("Sent message")
-            thread_ids.add(thread_id)
-            print(thread_ids, thread_id)
             await self.block_user(author_id)
             print(f"Blocked: {author_id}")
             with open('threads.conf', 'a') as config_file:
