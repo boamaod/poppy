@@ -7,13 +7,14 @@ If you are contacted on Messenger, a farewell message is displayed and further c
 
 # Install/test run
 
-Tried on Ubuntu 18.04.1 and Raspbian 9.3.
+Tried once on Ubuntu 18.04.1 and Raspbian 9.3, now running on Ubuntu 18.04.3.
 
 ```
 sudo apt install python3-setuptools python3-bs4
 git clone https://github.com/kapi2289/fbchat.git
-cd fbchat
-python3 setup.py install --user
+pip3 install fbchat
+git clone https://github.com/tulir/fbchat-asyncio.git
+pip3 install fbchat-asyncio
 wget https://raw.githubusercontent.com/boamaod/poppy/master/pop.py
 chmod +x pop.py
 sudo apt install screen
