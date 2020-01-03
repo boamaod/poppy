@@ -20,4 +20,7 @@ chmod +x pop.py
 sudo apt install screen
 screen -d -m -L -U -S poppy ./pop.py
 ```
+
+# In action
+
 ![You were no 15 blocked!](/blocked.png)
