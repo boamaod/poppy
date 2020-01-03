@@ -40,14 +40,13 @@ contact me at:
 
 ```"""
             reply = Message(text=poppy)
-            print(thread_ids, thread_id)
             await self.send(reply, thread_id=thread_id, thread_type=thread_type)
             print("Sent message")
             await self.block_user(author_id)
             print(f"Blocked: {author_id}")
             with open('threads.conf', 'a') as config_file:
                 config_file.write(thread_id + "\n")
-            print(thread_ids, thread_id)
+            print(thread_ids, "<-", thread_id)
 
 # Read list of thread IDs already announced to if available
 try:
